@@ -5,22 +5,217 @@
   --foreground: #171717;
 }
 
+@font-face {
+  font-family: "GalanoGrotesque-Regular";
+  src: url("/fonts/GalanoGrotesque-Regular/GalanoGrotesque-Regular.woff2")
+    format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GalanoGrotesque-Medium";
+  src: url("/fonts/GalanoGrotesque-Medium/GalanoGrotesque-Medium.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GalanoGrotesque-Semibold";
+  src: url("/fonts/GalanoGrotesque-SemiBold/GalanoGrotesque-SemiBold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --breakpoint-vsm: 320px; /* A completely new custom breakpoint */
+  --breakpoint-sm: 360px; /* Custom small breakpoint */
+  --breakpoint-md: 640px; /* Custom medium breakpoint */
+  --breakpoint-tb: 768px; /* Custom medium breakpoint */
+  --breakpoint-lg: 1024px; /* Custom large breakpoint */
+  --breakpoint-desktop: 1024px; /* A completely new custom breakpoint */
+  --breakpoint-xl: 1280px; /* A completely new custom breakpoint */
+  --breakpoint-2xl: 1536px; /* Custom 2x extra-large breakpoint */
+  --color-primaryBlue: #0430b4;
+  --color-secondary: #ffffff;
+  --font-bold: "GalanoGrotesque-Medium";
+  --font-semibold: "GalanoGrotesque-SemiBold";
+  --font-medium: "GalanoGrotesque-Medium";
+  --font-light: "GalanoGrotesque-Regular";
+  --font-regular: "GalanoGrotesque-Regular";
+  --font-GalanoRegular: "GalanoGrotesque-Regular";
+  --font-GalanoMedium: "GalanoGrotesque-Medium";
+  --font-GalanoSemiBold: "GalanoGrotesque-SemiBold";
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@custom-variant mobile (@media (min-width: 320px) and (max-width: 767px));
+@custom-variant tablet (@media (min-width: 768px) and (max-width: 1023px));
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "GalanoGrotesque-Regular";
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-delay-1 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  30% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-delay-2 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-delay-3 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  60% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-delay-4 {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  70% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+
+.animate-fade-in-delay-1 {
+  animation: fade-in-delay-1 1.5s ease-out;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fade-in-delay-2 2s ease-out;
+}
+
+.animate-fade-in-delay-3 {
+  animation: fade-in-delay-3 2.5s ease-out;
+}
+
+.animate-fade-in-delay-4 {
+  animation: fade-in-delay-4 3s ease-out;
+}
+
+/* Header Animations */
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin-once {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out;
+}
+
+.animate-spin-once {
+  animation: spin-once 0.3s ease-out;
+}
+
+/* Cursor styles for interactive elements */
+button,
+a,
+[role="button"] {
+  cursor: pointer;
+}
+
+button:active {
+  cursor: pointer;
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #9333ea);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #2563eb, #7c3aed);
 }

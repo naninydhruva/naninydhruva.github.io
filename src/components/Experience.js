@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import {
   Briefcase,
   MapPin,
@@ -14,46 +13,49 @@ import {
 } from "lucide-react";
 
 export default function Experience() {
-  const [hoveredMetric, setHoveredMetric] = useState(null);
-
   const metrics = [
     {
-      label: "User Engagement",
-      value: "25%",
-      icon: TrendingUp,
-      color: "from-pink-500 to-rose-500",
+      label: "AI-Driven Productivity Boost",
+      value: "40%",
+      icon: Code2,
+      color: "from-blue-500 to-green-500",
+      description:
+        "Leveraged AI-powered tools (e.g., Copilot) in the SDLC, resulting in a measurable 40% productivity increase across development, testing, bug fixes, and related activities.",
     },
     {
-      label: "Deployment Time",
+      label: "Deployment Efficiency",
       value: "30%",
       icon: Rocket,
       color: "from-purple-500 to-indigo-500",
+      description: "Reduction in time and effort needed to deploy updates.",
     },
     {
       label: "Release Cycles",
       value: "40%",
       icon: Zap,
       color: "from-blue-500 to-cyan-500",
+      description: "Improvement in the speed of delivering new versions.",
     },
     {
       label: "Bug Resolution",
-      value: "25%",
+      value: "50%",
       icon: Award,
       color: "from-emerald-500 to-teal-500",
+      description: "Decrease in time taken to fix and close reported issues.",
     },
   ];
 
   const responsibilities = [
     {
-      text: "Engineered a personalized period tracking application supporting women's health with cycle logging and predictive insights",
+      text: "Engineered a personalized period tracking application, leading to a 25% increase in the adoption of key health monitoring features.",
       icon: Code2,
     },
     {
-      text: "Integrated Contentful CMS for dynamic content management, reducing deployment time by 30%",
+      text: "Streamlined content updates by integrating a headless CMS (Contentful), which improved deployment efficiency by 30%.",
       icon: Rocket,
     },
     {
-      text: "Implemented custom CI/CD pipelines using GitHub Actions, reducing release cycles by 40%",
+      text: "Implemented custom CI/CD pipelines using GitHub Actions, accelerating release cycles by 40%.",
       icon: Zap,
     },
     {
@@ -65,7 +67,7 @@ export default function Experience() {
       icon: Users,
     },
     {
-      text: "Conducted debugging and root cause analysis, reducing bug resolution time by 25%",
+      text: "Conducted debugging and root cause analysis, improving bug resolution time by 25%.",
       icon: Award,
     },
     {
@@ -142,42 +144,50 @@ export default function Experience() {
                 <div className="absolute w-24 h-24 bg-white/10 rounded-full -bottom-12 -left-12"></div>
               </div>
 
-              {/* Metrics Section */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 p-4 sm:p-6 bg-gray-50 border-b border-gray-200">
-                {metrics.map((metric, idx) => {
-                  const MetricIcon = metric.icon;
-                  return (
-                    <div
-                      key={idx}
-                      className="relative group cursor-pointer"
-                      onMouseEnter={() => setHoveredMetric(idx)}
-                      onMouseLeave={() => setHoveredMetric(null)}
-                    >
-                      <div
-                        className={`bg-white rounded-2xl p-4 sm:p-5 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 ${
-                          hoveredMetric === idx
-                            ? "border-blue-500"
-                            : "border-transparent"
-                        }`}
-                      >
-                        <div
-                          className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-linear-to-br ${metric.color} mb-2 sm:mb-3 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`}
-                        >
-                          <MetricIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              {/* Metrics Section - Revamped */}
+              <div className="p-6 sm:p-8 bg-gray-50/50 border-b border-gray-200">
+                <h4 className="text-lg sm:text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                  <TrendingUp className="w-6 h-6 text-blue-600" />
+                  Key Performance Improvements
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                  {metrics.map((metric, idx) => {
+                    const MetricIcon = metric.icon;
+                    return (
+                      <div key={idx} className="group">
+                        <div className="flex justify-between items-center mb-2">
+                          <div className="flex items-center gap-2">
+                            <div
+                              className={`inline-flex items-center justify-center w-8 h-8 rounded-lg bg-linear-to-br ${metric.color} shadow-md`}
+                            >
+                              <MetricIcon className="w-5 h-5 text-white" />
+                            </div>
+                            <p className="font-semibold text-gray-700 text-sm sm:text-base">
+                              {metric.label}
+                            </p>
+                          </div>
+                          <p
+                            className={`font-bold text-transparent bg-clip-text bg-linear-to-r ${metric.color}`}
+                          >
+                            +{metric.value}
+                          </p>
                         </div>
-                        <p className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-1">
-                          {metric.value}
-                        </p>
-                        <p className="text-xs sm:text-sm text-gray-600 font-medium">
-                          {metric.label}
+                        <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden mb-2">
+                          <div
+                            className={`h-2.5 rounded-full bg-linear-to-r ${metric.color} transform transition-all duration-1000 ease-out`}
+                            style={{ width: metric.value }}
+                          ></div>
+                        </div>
+                        <p
+                          className="text-xs text-gray-500 mt-1 animate-fade-in"
+                          style={{ animationDelay: `${idx * 120 + 200}ms` }}
+                        >
+                          {metric.description}
                         </p>
                       </div>
-                      {hoveredMetric === idx && (
-                        <div className="absolute inset-0 bg-linear-to-r from-blue-500/20 to-purple-500/20 rounded-2xl animate-pulse pointer-events-none"></div>
-                      )}
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Responsibilities Section */}

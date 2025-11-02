@@ -18,7 +18,7 @@ export default function Projects() {
   const projects = [
     {
       title: "Period Wellness Application",
-      period: "June 2022 - Present",
+      period: "June 2022 - October 2025",
       description:
         "A comprehensive wellness application focused on improving female menstrual health tracking and insights",
       tech: ["Flutter", "Dart", "Firebase", "GitHub Actions", "TDD"],
@@ -32,8 +32,6 @@ export default function Projects() {
       ],
       gradient: "from-pink-500 via-rose-500 to-red-500",
       IconComponent: Heart,
-      impact: "25%",
-      impactLabel: "User Engagement",
     },
     {
       title: "Period Wellness Website",
@@ -50,7 +48,7 @@ export default function Projects() {
       ],
       highlights: [
         "Responsive design with Next.js & Tailwind",
-        "Period tracker with React & TypeScript",
+        "Period tracker with React & Javascript",
         "Product recommendation engine",
         "Third-party SDK integrations",
         "GTM optimization & GA4 tracking",
@@ -58,8 +56,6 @@ export default function Projects() {
       ],
       gradient: "from-purple-500 via-indigo-500 to-blue-500",
       IconComponent: Globe,
-      impact: "30%",
-      impactLabel: "Deployment Time",
     },
     {
       title: "App Screen Privacy Plugin",
@@ -140,14 +136,16 @@ export default function Projects() {
                   </p>
 
                   {/* Impact Badge */}
-                  <div
-                    className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-linear-to-r ${project.gradient} text-white text-xs sm:text-sm font-bold mb-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
-                  >
-                    <TrendingUp className="w-4 h-4 shrink-0" />
-                    <span>
-                      {project.impact} {project.impactLabel}
-                    </span>
-                  </div>
+                  {project.impact && project.impactLabel && (
+                    <div
+                      className={`inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-linear-to-r ${project.gradient} text-white text-xs sm:text-sm font-bold mb-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
+                    >
+                      <TrendingUp className="w-4 h-4 shrink-0" />
+                      <span>
+                        {project.impact} {project.impactLabel}
+                      </span>
+                    </div>
+                  )}
 
                   {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-4">

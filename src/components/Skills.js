@@ -31,6 +31,7 @@ export default function Skills() {
         "JavaScript",
         "TypeScript",
         "Python",
+        "GraphQL",
         "Swift (Basic)",
         "Kotlin (Basic)",
       ],
